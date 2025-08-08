@@ -1,0 +1,17 @@
+name: Issue Workflow
+
+on:
+  issues:
+    types: [opened, closed]
+
+jobs:
+  log-issue-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show issue info
+        run: |
+          echo "a new issue has been created by ${{github.actor}} in ${{github.repository}}"
+          echo "Issue number: ${{github.event.issue.number}}"
+          echo "Title: ${{github.event.issue.title}}"
+          echo "Body: ${{github.event.issue.body}}"
+          echo "State: ${{github.event.issue.state}}"
